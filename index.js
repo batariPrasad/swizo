@@ -8,7 +8,7 @@ const productRoutes = require('./routes/productRoutes')
 const path = require('path')
 
 const app = express()
-const port = 4000;
+const port = process.env.PORT || 4000;
 dotenv.config();
 mongoose.connect(process.env.mongo_url)
 .then(()=>console.log("MONGO DB  connected successfully"))
@@ -21,7 +21,7 @@ app.listen(port,()=>{
     console.log( ` server started and running at ${port}`);
 
 })
-app.use("/home",(req,res)=>{
-    res.send("<h1> welcome to project</h1>")
+app.use("/",(req,res)=>{
+    res.send("<h1> welcome to SWIZO</h1>")
 })
 app.use('/firm',firmRoutes)
