@@ -6,6 +6,7 @@ const bodyparser = require("body-parser")
 const firmRoutes = require('./routes/firmRoutes')
 const productRoutes = require('./routes/productRoutes')
 const path = require('path')
+const cors = require('cors')
 
 const app = express()
 const port = process.env.PORT || 4000;
@@ -14,6 +15,7 @@ mongoose.connect(process.env.mongo_url)
 .then(()=>console.log("MONGO DB  connected successfully"))
 .catch((error)=> console.log(error))
 app.use(bodyparser.json())
+app.use(cors)
 app.use("/vendor",vendorRoutes);
 app.use("/product",productRoutes);
 app.use('/uploads',express.static('uploads'))
